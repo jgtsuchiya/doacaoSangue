@@ -1,1 +1,1 @@
-# doacaoSangue
+Trabalho realizado na disciplina de Banco de Dados, do curso de Ciência da Computação, ministrada pelo prof. Dr. Eduardo Pena.
