@@ -1,0 +1,4 @@
+cpf -> {nome, data_nascimento}
+cep -> {cidade, estado}
+cnpj -> nome
+id_doador -> {data_doacao, id_hemonucleo}
