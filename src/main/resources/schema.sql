@@ -13,7 +13,6 @@ CREATE TABLE usuario (
     ativo BOOLEAN NOT NULL,
     FOREIGN KEY (id_endereco) REFERENCES endereco(id)
 );
-cpf -> {nome, data_nascimento}
 
 CREATE TABLE endereco (
     id BIGSERIAL PRIMARY KEY,
@@ -26,21 +25,18 @@ CREATE TABLE endereco (
     estado VARCHAR(2) NOT NULL
 );
 
-cep -> {cidade, estado}
-
 CREATE TABLE hemonucleo (
     cnpj VARCHAR(18) PRIMARY KEY NOT NULL,
     nome VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     senha VARCHAR(255) NOT NULL,
     telefone VARCHAR(20),
-    id_usuario BIGINT NOT NULL,
+    cpf_usuario BIGINT NOT NULL,
     id_endereco BIGINT NOT NULL,
     ativo BOOLEAN NOT NULL,
-    FOREIGN KEY (id_usuario) REFERENCES usuario(id)
+    FOREIGN KEY (cpf_usuario) REFERENCES usuario(cpf)
     FOREIGN KEY (id_endereco) REFERENCES endereco(id)
 );
-cnpj -> nome
 
 CREATE TABLE campanha (
     id BIGSERIAL PRIMARY KEY,
@@ -50,22 +46,14 @@ CREATE TABLE campanha (
     data_termino DATE NOT NULL,
     meta_doacoes INT,
     tipo_sanguineo_alvo VARCHAR(3),
-    id_hemonucleo BIGINT,
-    FOREIGN KEY (id_hemonucleo) REFERENCES hemonucleo(id)
+    cnpj_hemonucleo BIGINT,
+    FOREIGN KEY (cnpj_hemonucleo) REFERENCES hemonucleo(cnpj)
 );
 
 CREATE TABLE doacao (
-    id_doador BIGINT PRIMARY KEY NOT NULL,
+    cpf_doador BIGINT PRIMARY KEY NOT NULL,
     data_doacao TIMESTAMP NOT NULL,
-    id_hemonucleo BIGINT NOT NULL,
-    FOREIGN KEY (id_doador) REFERENCES usuario(id),
-    FOREIGN KEY (id_hemonucleo) REFERENCES hemonucleo(id)
+    cnpj_hemonucleo BIGINT NOT NULL,
+    FOREIGN KEY (cpf_doador) REFERENCES usuario(cpf),
+    FOREIGN KEY (cnpj_hemonucleo) REFERENCES hemonucleo(cnpj)
 );
-
-id_doador -> {data_doacao, id_hemonucleo}
-
---usuario(cpf (PK), nome, email, senha, telefone, tipo_sanguineo, sexo, data_nascimento, id_endereco (FK), type, user_role, ativo)
---hemonucleo(cnpj (PK), id_usuario (FK), id_endereco (FK), nome, email, senha, telefone,  ativo)
---endereco(id (PK), cep, logradouro, numero, complemento, bairro, cidade, estado)
---doacao(id_doador (PK), data_doacao, id_hemonucleo (FK))
---campanha(id (PK), nome, descricao, data_inicio, data_termino, meta_doacoes, tipo_sanguineo_alvo, id_hemonucleo (FK))

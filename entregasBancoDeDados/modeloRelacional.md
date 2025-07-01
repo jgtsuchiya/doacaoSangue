@@ -1,52 +1,32 @@
 # Modelo Relacional
 
-## Usuario
+---
 
-### usuario
-    cpf (PK), 
-    nome, 
-    email, 
-    senha, 
-    telefone, 
-    tipo_sanguineo, 
-    sexo, 
-    data_nascimento, 
-    id_endereco (FK), 
-    type, 
-    user_role, 
-    ativo
+## USUARIO
 
-### hemonucleo
-    cnpj (PK), 
-    id_usuario (FK), 
-    id_endereco (FK), 
-    nome, 
-    email, 
-    senha, 
-    telefone, 
-    ativo
 
-### endereco
-    id (PK), 
-    cep, 
-    logradouro, 
-    numero, 
-    complemento, 
-    bairro, 
-    cidade, 
-    estado
+- `cpf, nome, email, senha, telefone, tipo_sanguineo, sexo, data_nascimento, id_endereco, type, user_role, ativo`
 
-### doacao
-    id_doador (PK), 
-    data_doacao, 
-    id_hemonucleo (FK)
+---
 
-### campanha
-    id (PK), 
-    nome, 
-    descricao, 
-    data_inicio, 
-    data_termino, 
-    meta_doacoes, 
-    tipo_sanguineo_alvo, 
-    id_hemonucleo (FK)
+## HEMONUCLEO
+
+- `cnpj, nome, email, senha, telefone, cpf_usuario, id_endereco, ativo`
+
+---
+
+## ENDERECO
+
+- `id, cep, logradouro, numero, complemento, bairro, cidade, estado`
+
+---
+
+## CAMPANHA
+
+- `id, nome, descricao, data_inicio, data_termino, meta_doacoes, tipo_sanguineo_alvo, cnpj_hemonucleo`
+
+---
+
+## DOACAO
+
+- `cpf_doador, data_doacao, cnpj_hemonucleo`
