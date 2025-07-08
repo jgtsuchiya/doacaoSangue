@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  doacaosangue-postgres:
+    image: postgres:15
+    restart: always
+    ports:
+      - 6432:5432
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: doacaosangue
+      POSTGRES_PASSWORD:
+      TZ: America/Sao_Paulo
