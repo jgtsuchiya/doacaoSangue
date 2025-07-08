@@ -13,7 +13,7 @@ import org.springframework.http.ResponseEntity;
 @Tag(name = "Doações", description = "Endpoints para gerenciamento de doações")
 public interface DonationControllerOpenApi {
 
-    @Operation(summary = "Busca todas as doações", description = "Retorna uma lista de doações realizada pelo usuário logado.")
+    @Operation(summary = "Busca todas as doações", description = "Retorna uma lista de doações realizada.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Lista de doações encontradas com sucesso"),
             @ApiResponse(responseCode = "404", description = "Nenhum doação encontrado"),
@@ -21,15 +21,15 @@ public interface DonationControllerOpenApi {
     })
     ResponseEntity<Page<DonationResponseDTO>> listar(Pageable pageable, Long campanhaId, Long doadorId);
 
-    @Operation(summary = "Cria uma nova doação", description = "Cria um novo doação e o vincula ao usuário. Requer permissão de ADM.")
+    @Operation(summary = "Cria uma nova doação", description = "Cria um novo doação e o vincula ao usuário.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Doação criada com sucesso"),
             @ApiResponse(responseCode = "400", description = "Dados inválidos"),
-            @ApiResponse(responseCode = "403", description = "Acesso negado. Apenas usuários ADM podem criar.")
+            @ApiResponse(responseCode = "403", description = "Acesso negado.")
     })
     ResponseEntity<DonationResponseDTO> registrar(DonationCreateDTO dto);
 
-    @Operation(summary = "Busca todos os doadores", description = "Retorna uma lista de doares. Requer permissão de ADM.")
+    @Operation(summary = "Busca todos os doadores", description = "Retorna uma lista de doares.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Lista de doadores encontradas com sucesso"),
             @ApiResponse(responseCode = "404", description = "Nenhum doador encontrado"),

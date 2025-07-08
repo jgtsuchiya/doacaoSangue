@@ -29,19 +29,19 @@ public interface CampaignControllerOpenApi {
     })
     ResponseEntity<CampaignDTO> findById(@PathVariable Long id);
 
-    @Operation(summary = "Cria uma nova campanha", description = "Cria uma nova campanha. Requer permissão de ADM.")
+    @Operation(summary = "Cria uma nova campanha", description = "Cria uma nova campanha.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Campanha criada com sucesso"),
             @ApiResponse(responseCode = "400", description = "Dados inválidos"),
-            @ApiResponse(responseCode = "403", description = "Acesso negado. Apenas usuários ADM podem criar.")
+            @ApiResponse(responseCode = "403", description = "Acesso negado.")
     })
     ResponseEntity<CampaignDTO> create(CampaignDTO dto);
 
-    @Operation(summary = "Atualiza uma campanha específica", description = "Atualiza dados de uma campanha específica. Requer permissão de ADM.")
+    @Operation(summary = "Atualiza uma campanha específica", description = "Atualiza dados de uma campanha específica.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Campanha atualizada com sucesso"),
             @ApiResponse(responseCode = "400", description = "Dados inválidos"),
-            @ApiResponse(responseCode = "403", description = "Acesso negado. Apenas usuários ADM podem atualizar.")
+            @ApiResponse(responseCode = "403", description = "Acesso negado.")
     })
     ResponseEntity<CampaignDTO> update(Long id, CampaignDTO dto);
 }
