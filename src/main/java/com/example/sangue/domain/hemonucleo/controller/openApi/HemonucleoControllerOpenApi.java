@@ -8,6 +8,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Tag(name = "Hemonúcleos", description = "Endpoints para gerenciamento de hemonúcleos")
 public interface HemonucleoControllerOpenApi {
@@ -34,7 +36,7 @@ public interface HemonucleoControllerOpenApi {
             @ApiResponse(responseCode = "400", description = "Dados inválidos"),
             @ApiResponse(responseCode = "403", description = "Acesso negado. Apenas usuários ADM podem criar.")
     })
-    ResponseEntity<HemonucleoDTO> create(HemonucleoDTO dto);
+    ResponseEntity<HemonucleoDTO> createHemonucleo(Long idUsuarioAdm, HemonucleoDTO dto);
 
 
     @Operation(summary = "Atualiza um hemonúcleo específico", description = "Atualiza dados de um hemonúcleo específico. Requer permissão de ADM.")
