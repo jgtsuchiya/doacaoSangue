@@ -1,5 +1,6 @@
 package com.example.sangue.domain.campaign.controller;
 
+import com.example.sangue.domain.campaign.controller.openApi.CampaignControllerOpenApi;
 import com.example.sangue.domain.campaign.dto.CampaignDTO;
 import com.example.sangue.domain.campaign.service.CampaignService;
 import org.springframework.beans.factory.annotation.Autowired;
